@@ -1,6 +1,6 @@
-from models import Vacancy, VacancyStatus
-from tracker import JobTracker
-from storage import load_vacancies,save_vacancies
+from job_tracker.models import Vacancy, VacancyStatus
+from job_tracker.tracker import JobTracker
+from job_tracker.storage import load_vacancies,save_vacancies
 
 def print_menu() -> None:
     print("\n===== Job Tracker =====")

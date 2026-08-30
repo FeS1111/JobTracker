@@ -1,5 +1,5 @@
 from job_tracker.models import VacancyStatus
-from models import Vacancy
+from job_tracker.models import Vacancy
 
 class JobTracker:
     def __init__(self, vacancies: list[Vacancy] | None = None):

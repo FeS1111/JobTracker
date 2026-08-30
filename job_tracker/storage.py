@@ -1,7 +1,9 @@
 import json
-import sys
+from pathlib import Path
 from dataclasses import asdict
-from models import Vacancy, VacancyStatus
+from job_tracker.models import Vacancy, VacancyStatus
+
+STORAGE_PATH = Path(__file__).with_name("vacancies.json")
 
 def vacancy_to_dict(vacancy: Vacancy) -> dict:
     data = asdict(vacancy)
@@ -18,12 +20,12 @@ def save_vacancies(vacancies: list[Vacancy]) -> None:
     for vacancy in vacancies:
         storage.append(vacancy_to_dict(vacancy))
 
-    with open("vacancies.json", "w", encoding="utf-8") as file:
+    with open(STORAGE_PATH, "w", encoding="utf-8") as file:
         json.dump(storage, file, ensure_ascii=False, indent=4)
 
 def load_vacancies() -> list[Vacancy]:
     try:
-        with open("vacancies.json", encoding="utf-8") as file:
+        with open(STORAGE_PATH, encoding="utf-8") as file:
             storage = json.load(file)
 
     except FileNotFoundError:
